@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zetaur", "Zetaur\Zetaur.csproj", "{62321B72-2CFC-497E-8BB0-1E7DA2C8CF0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zetaur-Conv", "Zetaur-Conv\Zetaur-Conv.csproj", "{364F3439-A0A3-431B-8F35-B3977467B168}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62321B72-2CFC-497E-8BB0-1E7DA2C8CF0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62321B72-2CFC-497E-8BB0-1E7DA2C8CF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62321B72-2CFC-497E-8BB0-1E7DA2C8CF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62321B72-2CFC-497E-8BB0-1E7DA2C8CF0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{364F3439-A0A3-431B-8F35-B3977467B168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364F3439-A0A3-431B-8F35-B3977467B168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364F3439-A0A3-431B-8F35-B3977467B168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364F3439-A0A3-431B-8F35-B3977467B168}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE67894C-77B7-47A3-A509-718B3FA29696}
+	EndGlobalSection
+EndGlobal
