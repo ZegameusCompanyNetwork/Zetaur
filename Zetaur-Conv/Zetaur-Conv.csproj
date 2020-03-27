@@ -10,15 +10,4 @@
     <PackageIconUrl />
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\ZegameusCompanyNetwork\Consola-basica-con-comandos\Consola1\cmd_IDI_APPICON.ico">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\ZegameusCompanyNetwork\Consola-basica-con-comandos\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
 </Project>
