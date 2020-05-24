@@ -12,52 +12,67 @@ namespace Zetaur
         #region Menú-Principal
         public static void Cmd_prn()
         {
-        init:
-            Console.WriteLine("\nSección de conversiones\nComandos disponibles:\n");
-            string[] comandos = new string[5] { "temperatura", "longitud", "masa", "presion", "inicio" };//Creamos un arreglo que contenga 5 valores (recordad que se empieza a contar desde el 0, por lo tanto es 0,1,2,3,4...).
-            /* Establecemos el primer valor como temperatura
-             * El segundo como longitud 
-             * El tercero como masa (No confundir peso con masa, ya que el peso se mide en Newtons y la masa en Gramos)
-             * El cuarto como presion (aquí evitaremos las tildes)
-             * Y el último como inicio para volvel al menú principal
-             */
+            bool r = true;
+            while (r)
+            {
+                Console.WriteLine("\nSección de conversiones\nComandos disponibles:\n");
+                sbyte[] a = new sbyte[5] { 1, 2, 3, 4, 5 };//Creamos un arreglo que contenga 5 valores (recordad que se empieza a contar desde el 0, por lo tanto es 0,1,2,3,4...).
+                //Usamos Sbyte para ocupar el menor espacio en RAM posible.
+                //Vamos a mostrar los comandos en pantalla
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"{a[0]}: Para ir al menú de temperatura.\n{a[1]}: Para ir al menú de longitud.");
+                Console.WriteLine($"{a[2]}: Para ir al menú de masa.\n{a[3]}: Para ir al menú de presión.\n{a[4]}: Para ir al inicio.");
+                sbyte cmd = 1;
+                try
+                {
+                    Console.Write(">> ");
+                    cmd = Convert.ToSByte(Console.ReadLine());
+                }
+                catch (Exception e) when (e.GetType() != typeof(FormatException))
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("El valor introducizo no es numérico.");
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    //Creamos una sección de if-else para los distintos apartados de esta sección
+                    if (cmd == a[0])
+                    {
+                        Tmp_cmd();//Llamamos al método del submenú de temperatura
+                        r = true;
+                    }
+                    else if (cmd == a[1])
+                    {
+                        Long_cmd();//Llamamos al método del submenú de longitud
 
-            //Vamos a mostrar los comandos en pantalla
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0}: Para ir al menú de temperatura.\n{1}: Para ir al menú de longitud.", comandos[0], comandos[1]);
-            Console.WriteLine("{0}: Para ir al menú de masa.\n{1}: Para ir al menú de presion.\n{2}: Para ir al inicio.", comandos[2], comandos[3], comandos[4]);
-            string cmd = Convert.ToString(Console.ReadLine());
-            //Creamos una sección de if-else para los distintos apartados de esta sección
-            if (cmd == comandos[0])
-            {
-                Tmp_cmd();//Llamamos al metodo del submenu de temperatura
-                goto init;
+                    }
+                    else if (cmd == a[2])
+                    {
+                        SbmMasa();//Llamamos al método del submenú de masa
+                        r = true;
+                    }
+                    else if (cmd == a[3])
+                    {
+                        SbmPresion();//Llamamos al método del sumbenú de presión
+                        r = true;
+                    }
+                    else if (cmd == a[4])
+                    {
+                        Console.Clear();//Vamos a limpiar la pantalla
+                        Console.ForegroundColor = ConsoleColor.Green;//y a cambiarle el color de letra
+                        r = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nComando no encontrado, compruebe su otrografía");
+                        r = true;
+                    }
+                }
             }
-            else if (cmd == comandos[1])
-            {
-                Long_cmd();//llamamos al metodo del submenu de longitud
-                goto init;
-            }
-            else if (cmd == comandos[2])
-            {
-                SbmMasa();
-                goto init;
-            }
-            else if (cmd == comandos[3])
-            {
-                Console.WriteLine("No configurado todavía");
-            }
-            else if (cmd == comandos[4])
-            {
-                Console.Clear();//Vamos a limpiar la pantalla
-                Console.ForegroundColor = ConsoleColor.Green;//y a cambiarle el color de letra
-            }
-            else
-            {
-                Console.WriteLine("\nComando no encontrado, compruebe su otrografía");
-                goto init;
-            }
-
         }
         #endregion
         #region Submenú temperatura
@@ -252,6 +267,89 @@ namespace Zetaur
                 {
                     Console.WriteLine("Comando no encontrado.");
                     r = true;
+                }
+            }
+        }
+        #endregion
+        #region Submenú Presión
+        public static void SbmPresion()
+        {
+            bool r = true;
+            while (r)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                sbyte[] a = new sbyte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };//Le asignamos un valor de cantidades máximas
+                Console.WriteLine($"Comandos disponibles:\n{a[0]}: Conversor Atmósferas.\n{a[1]}: Conversor Bares.\n{a[2]}: Conversor Milibares.");
+                Console.WriteLine($"{a[3]}: Conversor Pascales.\n{a[4]}: Conversor HectoPascales.\n{a[5]}: Conversor PSI.\n{a[6]}: Conversor mmHg y Torr.");
+                Console.WriteLine($"{a[7]}: Conversor Kiloponidos por cm2.\n{a[8]}: Volver al menú.");
+                sbyte i = 1;
+                try
+                {
+                    Console.Write(">> ");
+                    i = Convert.ToSByte(Console.ReadLine());
+                }
+                catch (Exception e) when (e.GetType() != typeof(FormatException))
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("El valor introducido no es númerico");
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    if (i == a[0])
+                    {
+                        Transformador.CmdAtm();//Atmosferas técnicas
+                        r = true;
+                    }
+                    else if (i == a[1])
+                    {
+                        Transformador.CmdBar();//Bares
+                        r = true;
+                    }
+                    else if (i == a[2])
+                    {
+                        Transformador.CmdmBar();//Milibares
+                        r = true;
+                    }
+                    else if (i == a[3])
+                    {
+                        Transformador.CmdPa();//Pascales
+                        r = true;
+                    }
+                    else if (i == a[4])
+                    {
+                        Transformador.CmdhPa();//Hectopascales
+                        r = true;
+                    }
+                    else if (i == a[5])
+                    {
+                        Transformador.CmdPSI();//PSI
+                        r = true;
+                    }
+
+                    else if (i == a[6])
+                    {
+                        Transformador.CmdmmhgTorr();//Milimetros de mercurio y Torrs
+                        r = true;
+                    }
+                    else if (i == a[7])
+                    {
+                        Transformador.CmdKpcm2();//Kilopondios por centrimetro cuadrado
+                        r = true;
+                    }
+                    else if (i == a[8])//Salir
+                    {
+                        r = false;
+                        Console.Clear();
+                    }
+                    else//Excepción
+                    {
+                        Console.WriteLine("Comando no encontrado.");
+                        r = true;
+                    }
                 }
             }
         }

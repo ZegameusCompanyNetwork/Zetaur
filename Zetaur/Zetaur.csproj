@@ -10,6 +10,10 @@
     <PackageIconUrl />
     <ApplicationIcon>cmd_IDI_APPICON.ico</ApplicationIcon>
     <StartupObject>Zetaur.Program</StartupObject>
+    <RepositoryUrl>https://github.com/ZegameusCompanyNetwork/Zetaur</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
