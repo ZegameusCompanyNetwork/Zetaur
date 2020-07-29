@@ -56,7 +56,7 @@ namespace Zetaur
                 }
                 else if (Cmd.ToLower() == cmnd[7])
                 {
-                    Permcombrep perm = new Permcombrep();
+                    Factoriales perm = new Factoriales();
                     perm.Factorial();
                     r = true;
 
