@@ -312,4 +312,16 @@ namespace Zetaur_Conv
             Console.WriteLine($"{kpcm2} {p[8]} son: {Bar} {p[1]} o {mBar} {p[2]}.\n{Atm} {p[0]}.\n{PSI} {p[3]}\n{Pa} {p[4]} o {hPa} {p[5]}.\n {mmHg} {p[6]}/{p[7]}.");
         }
     }
+
+    public class Op_Fuerza
+    {
+        static readonly string[] p = { "Newtons (N)", "Kilogramo fuerza (Kp o kgf)", "Dina (dyn)", "Poundal (pdl)" };
+
+        public static void OpN(double N)
+        {
+            //con Math.Pow multiplicamos por la potencia de 10 ^ -5
+            double kp = N / 9.807, dyn = N * Math.Pow(10, -5);
+            Console.WriteLine($"{N} {p[0]} son:\n{kp} {p[1]}.\n{dyn} {p[2]}");
+        }
+    }
 }

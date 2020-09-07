@@ -12,11 +12,13 @@
     <StartupObject>Zetaur.Program</StartupObject>
     <RepositoryUrl>https://github.com/ZegameusCompanyNetwork/Zetaur</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <FileVersion>1.0.1.9</FileVersion>
+    <Version>1.0.1.9</Version>
+    <AssemblyVersion>1.0.1.9</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Transformador\Transformador.csproj" />
     <ProjectReference Include="..\Zetaur-Conv\Zetaur-Conv.csproj" />
   </ItemGroup>
 

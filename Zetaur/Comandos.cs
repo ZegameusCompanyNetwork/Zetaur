@@ -95,14 +95,14 @@ namespace Zetaur
         {
             Console.ForegroundColor = ConsoleColor.Green; //cambia el color de letra a verde claro
             Console.WriteLine("Los comandos disponibles para esta app son:\n");
-            Console.WriteLine("{0}: Muestra información sobre la app.", cmnd[0]);//Donde pone {0}, será remplazado por el contenido de cmnd[0]
-            Console.WriteLine("{0}: limpia la pantalla.", cmnd[1]);
-            Console.WriteLine("{0}: Le cambia a la consola de conversores", cmnd[2]);
-            Console.WriteLine("{0}: Sale del programa.", cmnd[3]);
-            Console.WriteLine("{0}: Muestra la ayuda.", cmnd[4]);
-            Console.WriteLine("{0}: Muestra la hora", cmnd[5]);
-            Console.WriteLine("{0}: inicia una calculadora de factoriales", cmnd[6]);
-            Console.WriteLine("{0}: Muestra una interfaz que permite saber que teclas pulsas", cmnd[7]);
+            Console.WriteLine($"{cmnd[0]}: Muestra información sobre la app.");
+            Console.WriteLine($"{cmnd[1]}: limpia la pantalla.");
+            Console.WriteLine($"{cmnd[2]}: Le cambia a la consola de conversores");
+            Console.WriteLine($"{cmnd[3]} o {cmnd[4]}: Sale del programa.");
+            Console.WriteLine($"{cmnd[5]}: Muestra la ayuda.");
+            Console.WriteLine($"{cmnd[6]}: Muestra la hora");
+            Console.WriteLine($"{cmnd[7]}: inicia una calculadora de factoriales");
+            Console.WriteLine($"{cmnd[8]}: Muestra una interfaz que permite saber que teclas pulsas");
             //Aquí añades tus propios comandos
         }
     }

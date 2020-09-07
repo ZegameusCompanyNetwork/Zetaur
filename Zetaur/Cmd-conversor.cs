@@ -4,6 +4,7 @@
  *#########################################################
  */
 using System;
+using Transformador;
 
 namespace Zetaur
 {
@@ -84,8 +85,7 @@ namespace Zetaur
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\nComandos disponibles:\n{0}: Para convertir de Celsius a Fahrenheit y a Kelvins.\n{1}: Para convertir de Fahrenheit a Celsius y a Kelvins.", tmp[0], tmp[1]);
             Console.WriteLine("{0}: Para convertir de Kelvins a Celsius y a Fahrenheit.", tmp[2]);
-            Console.Write("{0} para volver atras.\n>>", tmp[3]);
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("{0}: para volver atras.\n>> ", tmp[3]);
             int input = 0;
             try
             {
@@ -100,23 +100,23 @@ namespace Zetaur
                 Console.WriteLine("El valor introducizo no es numérico, se iniciara el conversor ºC a ºF y a K(Es el predeterminado)");
                 Console.WriteLine(e.Message);
             }
-
+            Console.ForegroundColor = ConsoleColor.Green;
             if (input == tmp[0])//Celsius a Fahrenheits y a Kelvins
             {
-                Transformador.TmpCel();
+                Conv_Temp.TmpCel();
                 goto init;
             }
             else if (input == tmp[1]) //Fahrenheits a Celsius y Kelvins
             {
-                Transformador.TmpFahr();
+                Conv_Temp.TmpFahr();
                 goto init;
             }
             else if (input == tmp[2])//Kelvins a Celsius y a Fahrenheits
             {
-                Transformador.TmpKel();
+                Conv_Temp.TmpKel();
                 goto init;
             }
-            else if (input == tmp[3])
+            else if (input == tmp[3])//salir
             {
                 Console.ForegroundColor = ConsoleColor.Green;//Cambiamos el color para volver atras y restablecerlo
             }
@@ -144,37 +144,37 @@ namespace Zetaur
             string i = Console.ReadLine();
             if (i == Convert.ToString(c[0]))//Utilizamos Convert.ToString para poder compararlo con i, ya que la entrada de volver es solo texto
             {
-                Transformador.CmdM();//Metros al resto
+                Conv_Long.CmdM();//Metros al resto
                 goto init;
             }
             else if (i == Convert.ToString(c[1]))
             {
-                Transformador.Cmdkm();//Kilometros al resto
+                Conv_Long.Cmdkm();//Kilometros al resto
                 goto init;
             }
             else if (i == Convert.ToString(c[2]))
             {
-                Transformador.CmdMi();//Millas
+                Conv_Long.CmdMi();//Millas
                 goto init;
             }
             else if (i == Convert.ToString(c[3]))
             {
-                Transformador.CmdNmi();//Millas-Millas Náuticas
+                Conv_Long.CmdNmi();//Millas-Millas Náuticas
                 goto init;
             }
             else if (i == Convert.ToString(c[4]))
             {
-                Transformador.CmdInc();//Pulgadas
+                Conv_Long.CmdInc();//Pulgadas
                 goto init;
             }
             else if (i == Convert.ToString(c[5]))
             {
-                Transformador.CmdYd();//Yardas
+                Conv_Long.CmdYd();//Yardas
                 goto init;
             }
             else if (i == Convert.ToString(c[6]))
             {
-                Transformador.CmdPie();//Pies
+                Conv_Long.CmdPie();//Pies
                 goto init;
             }
             else if (i == Convert.ToString(c[7]))//Vamos a ordenar que el texto de entrada sea transformado en minusculas
@@ -220,42 +220,42 @@ namespace Zetaur
                 }
                 if (i == a[0])
                 {
-                    Transformador.CmdKg();
+                    Conv_Masa.CmdKg();
                     r = true;
                 }
                 else if (i == a[1])
                 {
-                    Transformador.CmdGr();
+                    Conv_Masa.CmdGr();
                     r = true;
                 }
                 else if (i == a[2])
                 {
-                    Transformador.CmdT();
+                    Conv_Masa.CmdT();
                     r = true;
                 }
                 else if (i == a[3])
                 {
-                    Transformador.CmdUsT();
+                    Conv_Masa.CmdUsT();
                     r = true;
                 }
                 else if (i == a[4])
                 {
-                    Transformador.CmdUkT();
+                    Conv_Masa.CmdUkT();
                     r = true;
                 }
                 else if (i == a[5])
                 {
-                    Transformador.CmdLb();
+                    Conv_Masa.CmdLb();
                     r = true;
                 }
                 else if (i == a[6])
                 {
-                    Transformador.CmdOz();
+                    Conv_Masa.CmdOz();
                     r = true;
                 }
                 else if (i == a[7])
                 {
-                    Transformador.CmdSt();
+                    Conv_Masa.CmdSt();
                     r = true;
                 }
                 else if (i == a[8])
@@ -301,43 +301,43 @@ namespace Zetaur
                 {
                     if (i == a[0])
                     {
-                        Transformador.CmdAtm();//Atmosferas técnicas
+                        Conv_Presion.CmdAtm();//Atmosferas técnicas
                         r = true;
                     }
                     else if (i == a[1])
                     {
-                        Transformador.CmdBar();//Bares
+                        Conv_Presion.CmdBar();//Bares
                         r = true;
                     }
                     else if (i == a[2])
                     {
-                        Transformador.CmdmBar();//Milibares
+                        Conv_Presion.CmdmBar();//Milibares
                         r = true;
                     }
                     else if (i == a[3])
                     {
-                        Transformador.CmdPa();//Pascales
+                        Conv_Presion.CmdPa();//Pascales
                         r = true;
                     }
                     else if (i == a[4])
                     {
-                        Transformador.CmdhPa();//Hectopascales
+                        Conv_Presion.CmdhPa();//Hectopascales
                         r = true;
                     }
                     else if (i == a[5])
                     {
-                        Transformador.CmdPSI();//PSI
+                        Conv_Presion.CmdPSI();//PSI
                         r = true;
                     }
 
                     else if (i == a[6])
                     {
-                        Transformador.CmdmmhgTorr();//Milimetros de mercurio y Torrs
+                        Conv_Presion.CmdmmhgTorr();//Milimetros de mercurio y Torrs
                         r = true;
                     }
                     else if (i == a[7])
                     {
-                        Transformador.CmdKpcm2();//Kilopondios por centrimetro cuadrado
+                        Conv_Presion.CmdKpcm2();//Kilopondios por centrimetro cuadrado
                         r = true;
                     }
                     else if (i == a[8])//Salir
