@@ -8,9 +8,10 @@ namespace Zetaur
         public void Wkeytouch() //IMPORTANTE, ESTE MÉTODO NO PUEDE SER Static
         {
             ConsoleKeyInfo entrada;
+            Console.TreatControlCAsInput = true; //Prevenir el cierre del programa al usar CTRL+C
             do
             {
-                Console.WriteLine("Pulsa una tecla, con Alt, Ctrl, o Shift.");
+                Console.WriteLine("Pulsa una tecla, con Alt, Ctrl, o Shift; ");
                 Console.WriteLine("Pulsa Esc para salir.");
                 entrada = Console.ReadKey(true); //Establecemos que la tecla introducida tiene importancia
 

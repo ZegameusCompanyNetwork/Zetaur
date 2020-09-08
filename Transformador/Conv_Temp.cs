@@ -26,7 +26,7 @@ namespace Transformador
                 Console.Write($"Introduzca una temperatura en {temps[0]} a convertir:\n>> ");
                 try
                 {
-                    double cels = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));//Hacemos que el usuario introduzca una cantidad por la consola, y obligamos a convertirla a double.
+                    double cels = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
                     //En caso de no poder por el motivo que sea, pasaremos al bloque catch.
                     Console.WriteLine("\n{0} {1} a {2} es: {3}", frmcv, temps[0], temps[1], frms[4]);//Para ahorrar espacio utilizamos variables para acortar el código
                     Console.WriteLine("{0} {1} a {2} es: {3}", frmcv, temps[0], temps[2], frms[2]);
@@ -47,24 +47,14 @@ namespace Transformador
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Console.Write(Rp);
-            /*Creamos una condicion if, con un else if y con un else final, ya que este último vendría siendo el while; para mostrar en pantalla la cadena "go"
-             con la instrucción go.ToUpper() hacemos que el valor introducido se combierta a mayúsculas, y si no es igual a S (!= "S") hace que el bool rep
-             sea false, finalizando el bucle while
-             */
-            go:
+                /*Creamos una condicion if, con un else if y con un else final, ya que este último vendría siendo el while; para mostrar en pantalla la cadena "go"
+                 con la instrucción go.ToUpper() hacemos que el valor introducido se combierta a mayúsculas, y si no es igual a S (!= "S") hace que el bool rep
+                 sea false, finalizando el bucle while
+                 */
                 string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                if (go.ToUpper() != "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta sale del bucle
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.Write(vlno + Rp);
-                    goto go;
+                    rep = false;
                 }
             }
 
@@ -101,21 +91,8 @@ namespace Transformador
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Console.Write(Rp);
-            go:
                 string go = Console.ReadLine();
-                if (go.ToUpper() == "S")
-                {
-                    rep = true;
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;
-                }
-                else
-                {
-                    Console.Write(vlno + Rp);
-                    goto go;
-                }
+                if (go.ToUpper() != "S") { rep = false; }
             }
 
         }
@@ -151,20 +128,10 @@ namespace Transformador
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Console.Write(Rp);
-            go:
                 string go = Console.ReadLine();
-                if (go.ToUpper() == "S")
+                if (go.ToUpper() != "S")
                 {
                     rep = true;
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;
-                }
-                else
-                {
-                    Console.Write(vlno + Rp);
-                    goto go;
                 }
             }
 

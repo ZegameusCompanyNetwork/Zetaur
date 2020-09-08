@@ -4,13 +4,12 @@
  *#########################################################
  */
 using System;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Zetaur
 {
     class Comandos
     {
-        public string[] cmnd = new string[9] { "about", "clear", "conv", "exit", "salir", "help", "hora", "fact", "teclas" };
+        public string[] cmnd = new string[10] { "about", "clear", "cls","conv", "exit", "salir", "help", "hora", "fact", "teclas" };
         /*Creamos un array con nuestros comandos personalizados, 
          * recomiendo el uso de números para hacer que sea más rápido el uso del programa*/
         public void Comand()
@@ -26,26 +25,26 @@ namespace Zetaur
                     About_console(); //Llamamos a un método descrito más abajo para iniciar el constructor
                     r = true;
                 }
-                else if (Cmd.ToLower() == cmnd[1])
+                else if (Cmd.ToLower() == cmnd[1] || Cmd.ToLower() == cmnd[2])
                 {
                     Console.Clear();//Limpiamos la pantalla            
                     r = true;
                 }
-                else if (Cmd.ToLower() == cmnd[2])
+                else if (Cmd.ToLower() == cmnd[3])
                 {
                     Cmd_conversor.Cmd_prn();//Iniciamos el terminal de conversión
                     r = true;
                 }
-                else if (Cmd.ToLower() == cmnd[3] || Cmd.ToLower() == cmnd[4])//comara si el valor de entrada es igual a cmnd[3] o a cmnd[4]
+                else if (Cmd.ToLower() == cmnd[4] || Cmd.ToLower() == cmnd[5])//comara si el valor de entrada es igual a cmnd[3] o a cmnd[4]
                 {
                     r = false;
                 }
-                else if (Cmd.ToLower() == cmnd[5])
+                else if (Cmd.ToLower() == cmnd[6])
                 {
                     Help_console();//Llamamos al método de Help_console, programado más abajo
                     r = true;
                 }
-                else if (Cmd.ToLower() == cmnd[6])
+                else if (Cmd.ToLower() == cmnd[7])
                 {
                     Console.WriteLine($"Hora y Fecha: {DateTime.Now}\n");// Esto nos imprime la hora y la fecha en consola
                     Console.WriteLine($"Hora y Fecha personalizado: {DateTime.Now:hh:mm:ss.fff dd-MM-yy}"); //Aquí podemos establecer como se va ha mostrar la hora
@@ -54,14 +53,14 @@ namespace Zetaur
                     Console.Write($"Solo la Fecha: {DateTime.Now:dd / MM / yyyy}"); //Esto nos imprime solo la fecha
                     r = true;
                 }
-                else if (Cmd.ToLower() == cmnd[7])
+                else if (Cmd.ToLower() == cmnd[8])
                 {
                     Factoriales perm = new Factoriales();
                     perm.Factorial();
                     r = true;
 
                 }
-                else if (Cmd.ToLower() == cmnd[8])
+                else if (Cmd.ToLower() == cmnd[9])
                 {
                     Teclas teclas = new Teclas(); //llamamos a la clase Teclas
                     teclas.Wkeytouch();

@@ -17,7 +17,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en Atmósferas a convertir: ");
                 try
                 {
@@ -37,27 +36,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdBar()
@@ -65,7 +46,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en bares a convertir: ");
                 try
                 {
@@ -85,27 +65,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdmBar()
@@ -113,7 +75,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en milibares a convertir: ");
                 try
                 {
@@ -133,27 +94,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdPSI()
@@ -161,7 +104,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en PSI a convertir: ");
                 try
                 {
@@ -181,27 +123,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdPa()
@@ -209,7 +133,7 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
+
                 Console.Write("Inserte una cantidad en Pascales a convertir: ");
                 try
                 {
@@ -229,27 +153,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdhPa()
@@ -257,7 +163,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en Hectopascales a convertir: ");
                 try
                 {
@@ -277,27 +182,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdmmhgTorr()
@@ -305,7 +192,6 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
                 Console.Write("Inserte una cantidad en Atmósferas a convertir: ");
                 try
                 {
@@ -325,27 +211,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         public static void CmdKpcm2()
@@ -353,7 +221,7 @@ namespace Transformador
             bool r = true;
             while (r)
             {
-            Go:
+
                 Console.Write("Inserte una cantidad en Kilopondios por centímetro cuadrado a convertir: ");
                 try
                 {
@@ -373,27 +241,9 @@ namespace Transformador
                     Console.WriteLine($"\n{e.Message}\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                bool r1 = true;
-                while (r1)
-                {
-                    Console.WriteLine(reop);
-                    string go = Console.ReadLine();
-                    if (go.ToUpper() == "S")
-                    {
-                        goto Go;
-                    }
-                    else if (go.ToUpper() == "N")
-                    {
-                        Console.Clear();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(vlno);
-                        r1 = true;
-                    }
-                }
-                break;
+                Console.WriteLine(reop);
+                string go = Console.ReadLine();
+                if (go.ToUpper() != "S") { r = false; }
             }
         }
         #endregion
