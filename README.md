@@ -1,4 +1,5 @@
 # Consola básica con comandos
+# Cambios grandes en desarrollo, No funciona todavía
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ZegameusCompanyNetwork/Zetaur?style=plastic)
 ![GitHub](https://img.shields.io/github/license/ZegameusCompanyNetwork/Zetaur?style=plastic)
 [![Build Status](https://travis-ci.com/ZegameusCompanyNetwork/Zetaur.svg?branch=master)](https://travis-ci.com/ZegameusCompanyNetwork/Zetaur)
@@ -6,6 +7,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/ZegameusCompanyNetwork/Zetaur?style=plastic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ZegameusCompanyNetwork/Zetaur?style=plastic)
 ![Discord](https://img.shields.io/discord/306070603469815808?style=plastic)
+
 Esta consola está desarrollada en C# con .NET Core y es muy simple de modificicar así como de ampliar con tus propias funcionalidades.
 
 Puede ser ejecutada en Windows, Linux y MacOS.
