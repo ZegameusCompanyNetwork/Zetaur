@@ -19,7 +19,7 @@ namespace Transformador
                 try
                 {
                     double N = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Fuerza.OpN(N);
+                    //Op_Fuerza.OpN(N);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {

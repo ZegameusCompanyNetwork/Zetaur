@@ -13,51 +13,47 @@ namespace Transformador
     public class Conv_Long
     {
         private const string FrmExc = "Usted ha introducido un valor no númerico, por favor introduzca un número";//Declaro una constante para cuando el usuario cometa un excepción de tipo FormatException, más info abajoprivate const string Rp = "Otra temperatura que calcular? S/N: ";//Vamos a ahorrar espacio creando una constante para las repeticiones, en este caso para temperatura
-        private const string reop = "Otra unidad a convertir (S/N): ";//Y en este para las medidas de longitud
-        private const string vlno = "¿A introducido usted el valor adecuado?";//y esta para el S/N de continuar los bucles en caso de valor no admitido
+        private const string Rp = "Otra unidad a convertir (S/N): ";//Y en este para las medidas de longitud
 
         #region Longitud
         /// <summary>
-        /// Método de conversión de metros al resto de unidades disponibles (véase en el método Op_Long).
+        /// Método de conversión de metros al resto de unidades disponibles <seealso cref="Op_Long"/> .
         /// </summary>
         public static void CmdM()
         {
             bool rep = true;
             while (rep)
             {
-                Console.Write("Inserte una cantidad en metros a convertir: ");
+                Console.Write("Inserte una cantidad en metros a convertir:\n>> ");
                 try
                 {
-                    double m = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpM(m);
+                    double m = double.Parse(Regex.Replace(Console.ReadLine(), "[.,]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                    double[] o = Op_Long.OpM(m);
+                    Console.WriteLine("{0,20} Metros son:\n", m);
+                    Console.WriteLine("{0,20} Km\n{1,20} Mi\n{2,20} Nmi\n{3,20} in\n{4,20} Yd\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
-                    Console.WriteLine(e.Message + "\n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\n{e.Message}\n");
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
                 catch (FormatException e)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(FrmExc);
-                    Console.WriteLine(e.Message + "\n");
+                    Console.WriteLine($"\n{e.Message}\n");
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Console.Write(reop);//llamamos a la constante reop declarada al inicio de la region Longitud, usamos solo Write para que se muestre a continuación el valor de S o N
-            go:
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
+
         public static void Cmdkm()
         {
             bool rep = true;
@@ -67,7 +63,10 @@ namespace Transformador
                 try
                 {
                     double km = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpKm(km);//Llamamos al método de kilometros
+                    double[] o = Op_Long.OpKm(km);//Llamamos al método de kilometros
+
+                    Console.WriteLine("{0,20} Kilometros son:\n", km);
+                    Console.WriteLine("{0,20} M\n{1,20} Mi\n{2,20} Nmi\n{3,20} in\n{4,20} Yd\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -78,24 +77,15 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-                Console.Write(reop);
-            go:
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
+
         public static void CmdMi()
         {
             bool rep = true;
@@ -105,7 +95,9 @@ namespace Transformador
                 try
                 {
                     double Mi = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpMi(Mi);//Llamamos al método de Millas
+                    double[] o = Op_Long.OpMi(Mi);//Llamamos al método de Millas
+                    Console.WriteLine("{0,20} Millas son:\n", Mi);
+                    Console.WriteLine("{0,20} Km\n{1,20} M\n{2,20} Nmi\n{3,20} in\n{4,20} Yd\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -116,24 +108,15 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-                Console.Write(reop);
-            go:
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
+
         public static void CmdNmi()
         {
             bool rep = true;
@@ -143,7 +126,9 @@ namespace Transformador
                 try
                 {
                     double Nmi = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpNmi(Nmi);//Llamamos al método de Millas Náuticas
+                    double[] o = Op_Long.OpNmi(Nmi);//Llamamos al método de Millas Náuticas
+                    Console.WriteLine("{0,20} Millas son:\n", Nmi);
+                    Console.WriteLine("{0,20} Km\n{1,20} M\n{2,20} Mi\n{3,20} in\n{4,20} Yd\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -154,26 +139,15 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-                Console.Write(reop);
-            go:
-                Console.Write(reop);
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    Console.Clear();
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
+
         public static void CmdInc()
         {
             bool rep = true;
@@ -183,7 +157,9 @@ namespace Transformador
                 try
                 {
                     double Inc = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpInc(Inc);//Llamamos al método de Pulgadas
+                    double[] o = Op_Long.OpInc(Inc);//Llamamos al método de Pulgadas
+                    Console.WriteLine("{0,20} Millas son:\n", Inc);
+                    Console.WriteLine("{0,20} Km\n{1,20} M\n{2,20} Mi\n{3,20} Nmi\n{4,20} Yd\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -194,23 +170,11 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-                Console.Write(reop);
-            go:
-                Console.Write(reop);
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    Console.Clear();
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
@@ -223,7 +187,9 @@ namespace Transformador
                 try
                 {
                     double Yd = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpYd(Yd);//Llamamos al método de Yardas
+                    double[] o = Op_Long.OpYd(Yd);//Llamamos al método de Yardas
+                    Console.WriteLine("{0,20} Millas son:\n", Yd);
+                    Console.WriteLine("{0,20} Km\n{1,20} M\n{2,20} Mi\n{3,20} Nmi\n{4,20} in\n{5,20} ft", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -234,23 +200,11 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-                Console.Write(reop);
-            go:
-                Console.Write(reop);
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    Console.Clear();
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }
@@ -262,8 +216,10 @@ namespace Transformador
                 Console.Write("Inserte una cantidad en Pies a convertir: ");
                 try
                 {
-                    double pie = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpFt(pie);//Llamamos al método de pie
+                    double ft = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                    double[] o = Op_Long.OpFt(ft);//Llamamos al método de ft
+                    Console.WriteLine("{0,20} Millas son:\n", ft);
+                    Console.WriteLine("{0,20} Km\n{1,20} M\n{2,20} Mi\n{3,20} Nmi\n{4,20} in\n{5,20} yd", o[0], o[1], o[2], o[3], o[4], o[5]);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -274,22 +230,11 @@ namespace Transformador
                     Console.WriteLine(FrmExc);
                     Console.WriteLine(e.Message + "\n");
                 }
-            go:
-                Console.Write(reop);
-                string go = Console.ReadLine();
-                if (go.ToUpper() == "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta el siguiente fragmento de código
+                finally
                 {
-                    rep = true;//mantenemos en true para poder ejecutar el bucle while de nuevo
-                }
-                else if (go.ToUpper() == "N")
-                {
-                    Console.Clear();
-                    rep = false;//Cambiamos de true a false
-                }
-                else
-                {
-                    Console.WriteLine(vlno);
-                    goto go;
+                    Console.WriteLine(Rp);
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "S" && go.ToUpper() != "Y") { rep = false; }
                 }
             }
         }

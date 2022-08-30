@@ -17,17 +17,17 @@ namespace Zetaur
             while (r)
             {
                 Console.WriteLine("\nSección de conversiones\nComandos disponibles:\n");
-                sbyte[] a = new sbyte[5] { 1, 2, 3, 4, 5 };//Creamos un arreglo que contenga 5 valores (recordad que se empieza a contar desde el 0, por lo tanto es 0,1,2,3,4...).
+                sbyte[] a = new sbyte[5] { 1, 2, 3, 4, 5 };//Creamos un arreglo que contenga 5 valores (recordad que se empieza n contar desde el 0, por lo tanto es 0,1,2,3,4...).
                 //Usamos Sbyte para ocupar el menor espacio en RAM posible.
-                //Vamos a mostrar los comandos en pantalla
+                //Vamos n mostrar los comandos en pantalla
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"{a[0]}: Para ir al menú de temperatura.\n{a[1]}: Para ir al menú de longitud.");
                 Console.WriteLine($"{a[2]}: Para ir al menú de masa.\n{a[3]}: Para ir al menú de presión.\n{a[4]}: Para ir al inicio.");
-                sbyte cmd = 1;
+                sbyte i = 0;
                 try
                 {
                     Console.Write(">> ");
-                    cmd = Convert.ToSByte(Console.ReadLine());
+                    i = Convert.ToSByte(Console.ReadLine());
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -40,155 +40,180 @@ namespace Zetaur
                 }
                 finally
                 {
-                    //Creamos una sección de if-else para los distintos apartados de esta sección
-                    if (cmd == a[0])
+                    switch (i)
                     {
-                        Tmp_cmd();//Llamamos al método del submenú de temperatura
-                        r = true;
-                    }
-                    else if (cmd == a[1])
-                    {
-                        Long_cmd();//Llamamos al método del submenú de longitud
+                        default:
+                        case 0:
+                            r = true;
+                            Console.Clear();
+                            break;
+                        case 1:
+                            SbmTemp();//Llamamos al método del submenú de temperatura
+                            r = true;
+                            break;
+                        case 2:
+                            SmbLong();//Llamamos al método del submenú de longitud
+                            r = true;
+                            break;
 
-                    }
-                    else if (cmd == a[2])
-                    {
-                        SbmMasa();//Llamamos al método del submenú de masa
-                        r = true;
-                    }
-                    else if (cmd == a[3])
-                    {
-                        SbmPresion();//Llamamos al método del sumbenú de presión
-                        r = true;
-                    }
-                    else if (cmd == a[4])
-                    {
-                        Console.Clear();//Vamos a limpiar la pantalla
-                        Console.ForegroundColor = ConsoleColor.Green;//y a cambiarle el color de letra
-                        r = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nComando no encontrado, compruebe su otrografía");
-                        r = true;
+                        case 3:
+                            SbmMasa();//Llamamos al método del submenú de masa
+                            r = true;
+                            break;
+                        case 4:
+                            SbmPresion();//Llamamos al método del sumbenú de presión
+                            r = true;
+                            break;
+
+                        case 5:
+                            Console.Clear();//Vamos n limpiar la pantalla
+                            Console.ForegroundColor = ConsoleColor.Green;//y n cambiarle el color de letra
+                            r = false;
+                            break;
                     }
                 }
             }
         }
         #endregion
         #region Submenú temperatura
-        public static void Tmp_cmd()
+        public static void SbmTemp()
         {
-        init:
-            int[] tmp = new int[4] { 1, 2, 3, 4 };
-            Console.WriteLine("\nSección de conversión de temperatura");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\nComandos disponibles:\n{0}: Para convertir de Celsius a Fahrenheit y a Kelvins.\n{1}: Para convertir de Fahrenheit a Celsius y a Kelvins.", tmp[0], tmp[1]);
-            Console.WriteLine("{0}: Para convertir de Kelvins a Celsius y a Fahrenheit.", tmp[2]);
-            Console.Write("{0}: para volver atras.\n>> ", tmp[3]);
-            int input = 0;
-            try
+            bool rep = true;
+            while (rep)
             {
-                input = int.Parse(Console.ReadLine());
-            }
-            catch (Exception e) when (e.GetType() != typeof(FormatException))
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine("El valor introducizo no es numérico, se iniciara el conversor ºC a ºF y a K(Es el predeterminado)");
-                Console.WriteLine(e.Message);
-            }
-            Console.ForegroundColor = ConsoleColor.Green;
-            if (input == tmp[0])//Celsius a Fahrenheits y a Kelvins
-            {
-                Conv_Temp.TmpCel();
-                goto init;
-            }
-            else if (input == tmp[1]) //Fahrenheits a Celsius y Kelvins
-            {
-                Conv_Temp.TmpFahr();
-                goto init;
-            }
-            else if (input == tmp[2])//Kelvins a Celsius y a Fahrenheits
-            {
-                Conv_Temp.TmpKel();
-                goto init;
-            }
-            else if (input == tmp[3])//salir
-            {
-                Console.ForegroundColor = ConsoleColor.Green;//Cambiamos el color para volver atras y restablecerlo
-            }
-            else
-            {
-                Console.WriteLine("\nComando no encontrado, revise la ortografía");
-                goto init;
+                int[] n = new int[6] { 1, 2, 3, 4, 5, 6 };
+                Console.WriteLine("\nSección de conversión de temperatura.");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\nComandos disponibles:\n{0}: Para convertir desde Celsius.\n{1}: Para convertir desde Fahrenheit.", n[0], n[1]);
+                Console.WriteLine("{0}: Para convertir desde Kelvins.\n{1}: Para convertir desde Rankine.\n{2}: Para convertir desde Réaumur.", n[2], n[3], n[4]);
+                Console.Write("{0}: para volver atras.\n>> ", n[5]);
+                sbyte input = 0;
+                try
+                {
+                    input = sbyte.Parse(Console.ReadLine());
+                }
+                catch (Exception e) when (e.GetType() != typeof(FormatException))
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("El valor introducizo no es numérico.");
+                    Console.WriteLine(e.Message);
+                }
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                switch (input)
+                {
+                    //En caso de que el valor no esté en lo predefinido o seá 0, lo cual puede significar que ha ocurrido un error.
+                    default:
+                    case 0:
+                        rep = true;
+                        Console.Clear();
+                        break;
+
+                    case 1:
+                        Conv_Temp.TmpCel();
+                        rep = true;
+                        break;
+                    case 2:
+                        Conv_Temp.TmpFahr();
+                        rep = true;
+                        break;
+                    case 3:
+                        Conv_Temp.TmpKel();
+                        rep = true;
+                        break;
+                    case 4:
+                        Conv_Temp.TmpRan();
+                        rep = true;
+                        break;
+                    case 5:
+                        Conv_Temp.TmpRea();
+                        rep = true;
+                        break;
+                    case 6:
+                        rep = false;
+                        break;
+
+                }
             }
         }
         #endregion
         #region Submenú longitud
-        public static void Long_cmd()
+        public static void SmbLong()
         {
-        init:
-            #region Comandos
-            sbyte[] c = new sbyte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };//Utilizamos sbyte en vez de int porque utilizamos valores pequeños y no es necesario reservar mucho espacio en la memoria RAM, estos valores van de -128 a 127, por lo que aún nos sobra.
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\nComandos disponibles:\n{0}: Para convertir Metros.", c[0]);
-            Console.WriteLine("{0}: Para convertir kilometros.\n{1}: Para convertir Millas.", c[1], c[2]);
-            Console.WriteLine("{0}: Para convertir Millas náuticas.\n{1}: Para convertir Pulgadas.", c[3], c[4]);
-            Console.WriteLine("{0}: Para convertir Yardas.\n{1}: Para convertir Pies", c[5], c[6]);
-            Console.WriteLine("{0}: Para volver al menú principal del conversor", c[7]);
-            #endregion
-            #region if-else
-            string i = Console.ReadLine();
-            if (i == Convert.ToString(c[0]))//Utilizamos Convert.ToString para poder compararlo con i, ya que la entrada de volver es solo texto
+            bool rep = true;
+            while (rep)
             {
-                Conv_Long.CmdM();//Metros al resto
-                goto init;
+                sbyte[] n = new sbyte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };//Utilizamos sbyte en vez de int porque utilizamos valores pequeños y no es necesario reservar mucho espacio en la memoria RAM, estos valores van de -128 n 127, por lo que aún nos sobra.
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\nComandos disponibles:\n{0}: Para convertir Metros.", n[0]);
+                Console.WriteLine("{0}: Para convertir kilometros.\n{1}: Para convertir Millas.", n[1], n[2]);
+                Console.WriteLine("{0}: Para convertir Millas náuticas.\n{1}: Para convertir Pulgadas.", n[3], n[4]);
+                Console.WriteLine("{0}: Para convertir Yardas.\n{1}: Para convertir Pies", n[5], n[6]);
+                Console.WriteLine("{0}: Para volver al menú principal del conversor", n[7]);
+                #endregion
+                #region if-else
+                sbyte i = 0;
+                try
+                {
+                    i = sbyte.Parse(Console.ReadLine());
+
+                }
+                catch (Exception e) when (e.GetType() != typeof(FormatException))
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("El valor introducizo no es numérico.");
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    switch (i)
+                    {
+                        case 1://Utilizamos Convert.ToString para poder compararlo con i, ya que la entrada de volver es solo texto
+                            Conv_Long.CmdM();//Metros al resto
+                            rep = true;
+                            break;
+                        case 2:
+                            Conv_Long.Cmdkm();//Kilometros al resto
+                            rep = true;
+                            break;
+                        case 3:
+                            Conv_Long.CmdMi();//Millas
+                            rep = true;
+                            break;
+                        case 4:
+                            Conv_Long.CmdNmi();//Millas-Millas Náuticas
+                            rep = true;
+                            break;
+
+                        case 5:
+                            Conv_Long.CmdInc();//Pulgadas
+                            rep = true;
+                            break;
+                        case 6:
+                            Conv_Long.CmdYd();//Yardas
+                            rep = true;
+                            break;
+                        case 7:
+                            Conv_Long.CmdPie();//Pies
+                            rep = true;
+                            break;
+
+                        default:
+                        case 0:
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            rep = false;
+                            break;
+                    }
+
+                }
             }
-            else if (i == Convert.ToString(c[1]))
-            {
-                Conv_Long.Cmdkm();//Kilometros al resto
-                goto init;
-            }
-            else if (i == Convert.ToString(c[2]))
-            {
-                Conv_Long.CmdMi();//Millas
-                goto init;
-            }
-            else if (i == Convert.ToString(c[3]))
-            {
-                Conv_Long.CmdNmi();//Millas-Millas Náuticas
-                goto init;
-            }
-            else if (i == Convert.ToString(c[4]))
-            {
-                Conv_Long.CmdInc();//Pulgadas
-                goto init;
-            }
-            else if (i == Convert.ToString(c[5]))
-            {
-                Conv_Long.CmdYd();//Yardas
-                goto init;
-            }
-            else if (i == Convert.ToString(c[6]))
-            {
-                Conv_Long.CmdPie();//Pies
-                goto init;
-            }
-            else if (i == Convert.ToString(c[7]))//Vamos a ordenar que el texto de entrada sea transformado en minusculas
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Green;
-                //Importante no poner el goto init, ya que nunca saldriamos de este bucle
-            }
-            else
-            {
-                Console.WriteLine("\nComando no encontrado, compruebe su ortografía.");
-                goto init;
-            }
-            #endregion
         }
         #endregion
         #region Submenú masa
@@ -198,11 +223,11 @@ namespace Zetaur
             while (r)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                sbyte[] a = new sbyte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-                Console.WriteLine("Comandos disponibles:\n{0}: Conversor Kilogramos.\n{1}: Conversor Gramos.", a[0], a[1]);
-                Console.WriteLine("{0}: Toneladas.\n{1}: Conversor Toneladas Cortas.\n{2}: Conversor Toneladas Largas", a[2], a[3], a[4]);
-                Console.WriteLine("{0}: Conversor Libras.\n{1}: Conversor Onzas.\n{2}: Conversor \"Stones\".", a[5], a[6], a[7]);
-                Console.WriteLine("{0}: Volver al menú.", a[8]);
+                sbyte[] n = new sbyte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                Console.WriteLine("Comandos disponibles:\n{0}: Conversor Kilogramos.\n{1}: Conversor Gramos.", n[0], n[1]);
+                Console.WriteLine("{0}: Toneladas.\n{1}: Conversor Toneladas Cortas.\n{2}: Conversor Toneladas Largas", n[2], n[3], n[4]);
+                Console.WriteLine("{0}: Conversor Libras.\n{1}: Conversor Onzas.\n{2}: Conversor \"Stones\".", n[5], n[6], n[7]);
+                Console.WriteLine("{0}: Volver al menú.", n[8]);
 
                 sbyte i = 1;
                 try
@@ -218,47 +243,47 @@ namespace Zetaur
                     Console.WriteLine("El valor introducizo no es numérico.");
                     Console.WriteLine(e.Message);
                 }
-                if (i == a[0])
+                if (i == n[0])
                 {
                     Conv_Masa.CmdKg();
                     r = true;
                 }
-                else if (i == a[1])
+                else if (i == n[1])
                 {
                     Conv_Masa.CmdGr();
                     r = true;
                 }
-                else if (i == a[2])
+                else if (i == n[2])
                 {
                     Conv_Masa.CmdT();
                     r = true;
                 }
-                else if (i == a[3])
+                else if (i == n[3])
                 {
                     Conv_Masa.CmdUsT();
                     r = true;
                 }
-                else if (i == a[4])
+                else if (i == n[4])
                 {
                     Conv_Masa.CmdUkT();
                     r = true;
                 }
-                else if (i == a[5])
+                else if (i == n[5])
                 {
                     Conv_Masa.CmdLb();
                     r = true;
                 }
-                else if (i == a[6])
+                else if (i == n[6])
                 {
                     Conv_Masa.CmdOz();
                     r = true;
                 }
-                else if (i == a[7])
+                else if (i == n[7])
                 {
                     Conv_Masa.CmdSt();
                     r = true;
                 }
-                else if (i == a[8])
+                else if (i == n[8])
                 {
                     r = false;
                     Console.Clear();
@@ -278,10 +303,10 @@ namespace Zetaur
             while (r)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                sbyte[] a = new sbyte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };//Le asignamos un valor de cantidades máximas
-                Console.WriteLine($"Comandos disponibles:\n{a[0]}: Conversor Atmósferas.\n{a[1]}: Conversor Bares.\n{a[2]}: Conversor Milibares.");
-                Console.WriteLine($"{a[3]}: Conversor Pascales.\n{a[4]}: Conversor HectoPascales.\n{a[5]}: Conversor PSI.\n{a[6]}: Conversor mmHg y Torr.");
-                Console.WriteLine($"{a[7]}: Conversor Kiloponidos por cm2.\n{a[8]}: Volver al menú.");
+                sbyte[] n = new sbyte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };//Le asignamos un valor de cantidades máximas
+                Console.WriteLine($"Comandos disponibles:\n{n[0]}: Conversor Atmósferas.\n{n[1]}: Conversor Bares.\n{n[2]}: Conversor Milibares.");
+                Console.WriteLine($"{n[3]}: Conversor Pascales.\n{n[4]}: Conversor HectoPascales.\n{n[5]}: Conversor PSI.\n{n[6]}: Conversor mmHg y Torr.");
+                Console.WriteLine($"{n[7]}: Conversor Kiloponidos por cm2.\n{n[8]}: Volver al menú.");
                 sbyte i = 1;
                 try
                 {
@@ -299,56 +324,49 @@ namespace Zetaur
                 }
                 finally
                 {
-                    if (i == a[0])
+                    switch (i)
                     {
-                        Conv_Presion.CmdAtm();//Atmosferas técnicas
-                        r = true;
-                    }
-                    else if (i == a[1])
-                    {
-                        Conv_Presion.CmdBar();//Bares
-                        r = true;
-                    }
-                    else if (i == a[2])
-                    {
-                        Conv_Presion.CmdmBar();//Milibares
-                        r = true;
-                    }
-                    else if (i == a[3])
-                    {
-                        Conv_Presion.CmdPa();//Pascales
-                        r = true;
-                    }
-                    else if (i == a[4])
-                    {
-                        Conv_Presion.CmdhPa();//Hectopascales
-                        r = true;
-                    }
-                    else if (i == a[5])
-                    {
-                        Conv_Presion.CmdPSI();//PSI
-                        r = true;
-                    }
-
-                    else if (i == a[6])
-                    {
-                        Conv_Presion.CmdmmhgTorr();//Milimetros de mercurio y Torrs
-                        r = true;
-                    }
-                    else if (i == a[7])
-                    {
-                        Conv_Presion.CmdKpcm2();//Kilopondios por centrimetro cuadrado
-                        r = true;
-                    }
-                    else if (i == a[8])//Salir
-                    {
-                        r = false;
-                        Console.Clear();
-                    }
-                    else//Excepción
-                    {
-                        Console.WriteLine("Comando no encontrado.");
-                        r = true;
+                        default:
+                        case 0:
+                            r = true;
+                            Console.Clear();
+                            break;
+                        case 1:
+                            Conv_Presion.CmdAtm();//Atmosferas técnicas
+                            r = true;
+                            break;
+                        case 2:
+                            Conv_Presion.CmdBar();//Bares
+                            r = true;
+                            break;
+                        case 3:
+                            Conv_Presion.CmdmBar();//Milibares
+                            r = true;
+                            break;
+                        case 4:
+                            Conv_Presion.CmdPa();//Pascales
+                            r = true;
+                            break;
+                        case 5:
+                            Conv_Presion.CmdhPa();//Hectopascales
+                            r = true;
+                            break;
+                        case 6:
+                            Conv_Presion.CmdPSI();//PSI
+                            r = true;
+                            break;
+                        case 7:
+                            Conv_Presion.CmdmmhgTorr();//Milimetros de mercurio y Torrs
+                            r = true;
+                            break;
+                        case 8:
+                            Conv_Presion.CmdKpcm2();//Kilopondios por centrimetro cuadrado
+                            r = true;
+                            break;
+                        case 9:
+                            r = false;
+                            Console.Clear();
+                            break;
                     }
                 }
             }

@@ -7,18 +7,35 @@
     <Copyright>©Zegameus Company Network Records®</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl />
-    <Version>1.2.0.3</Version>
+    <Version>1.2.0.4</Version>
     <Description>Librería para la conversión de unidades de medida.
 Consulta las unidades disponibles en GitHub</Description>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Platforms>AnyCPU;ARM32;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM32'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM32'">
     <DebugType>portable</DebugType>
   </PropertyGroup>
 

@@ -13,16 +13,11 @@ namespace Zetaur_Conv
     /// <item><term>Pa</term><description>Pascales</description></item>
     /// <item><term>hPa</term><description>Hectopascales</description></item>
     /// <item><term>mmHg</term><description>Milímetros de Mercurio</description></item>
-    /// <item><term>torr</term><description>Torr</description></item>
+    /// <item><term>kpcm2</term><description>Kilopondios por centímetro cuadrado</description></item>
     /// </list>
     /// </summary>
     public class Op_Presion
     {
-        /// <summary>
-        /// 0 = Atm, 1 = bar, 2 = mbar, 3 = PSI, 4 = Pa, 5 = hPa, 6 = mmHg, 7 = Torr, 8 = kp/cm2
-        /// </summary>
-        static readonly string[] p = { "Atmósferas (atm)", "Bares (bar)", "Milibares (mbar)", "Libra por pulgada cuadrada (PSI)", "Pascales (Pa)", "Hectopascales (hPa)", "Milímetros de Mercurio (mmHg)", "Torr (torr)", "Kilopondio por centímetro cuadrado" };
-
         /// <summary>
         /// Convierte Atmosferas al resto de unidades.
         /// </summary>
