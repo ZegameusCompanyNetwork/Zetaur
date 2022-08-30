@@ -5,10 +5,21 @@
     <RootNamespace>Zetaur_Conv</RootNamespace>
     <Authors>Zegameus Company Network Records®</Authors>
     <Copyright>©Zegameus Company Network Records®</Copyright>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>cmd_IDI_APPICON.ico</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl />
-    <Version>1.0.1.1</Version>
+    <Version>1.2.0.3</Version>
+    <Description>Librería para la conversión de unidades de medida.
+Consulta las unidades disponibles en GitHub</Description>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
 </Project>

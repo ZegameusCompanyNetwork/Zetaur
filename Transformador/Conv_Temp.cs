@@ -11,10 +11,6 @@ namespace Transformador
         private const string Rp = "Otra temperatura que calcular? S/N: ";//Vamos a ahorrar espacio creando una constante para las repeticiones, en este caso para temperatura
         private const string vlno = "¿A introducido usted el valor adecuado?\n";//y esta para el S/N de continuar los bucles en caso de valor no admitido
         #region Temperatura
-        private const string frmcv = "La formula para convertir de";
-        private static readonly string[] temps = { "Grados Celsius", "Fahrenheit", "Kelvins" };//para poder usar el array tenemos que ponerlo como static y para evitar su modificación lo ponemos como readonly
-        private static readonly string[] frms = { "ºC = (ºF - 32) * 5 / 9", "ºC = K -273.15", "K = ºC + 273.15", "K = (ºF - 32) * 5 / 9 + 273.15", "ºF = (ºC * 5 / 9) + 32", "ºF = (K - 273.15) * 9 / 5 + 32" };
-        #region Celsius-Fahrenheits-Kelvins
         /// <summary>
         /// Método pre-creado de conversión de temperaturas. Celsius a Fahrenheits y a Kelvins.
         /// </summary>
@@ -23,14 +19,12 @@ namespace Transformador
             bool rep = true; //Declaramos un booleano en condicion true para poder ejecutar un while a continuación
             while (rep)
             {
-                Console.Write($"Introduzca una temperatura en {temps[0]} a convertir:\n>> ");
+                Console.Write($"Introduzca una temperatura en ºC a convertir:\n>> ");
                 try
                 {
                     double cels = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
                     //En caso de no poder por el motivo que sea, pasaremos al bloque catch.
-                    Console.WriteLine("\n{0} {1} a {2} es: {3}", frmcv, temps[0], temps[1], frms[4]);//Para ahorrar espacio utilizamos variables para acortar el código
-                    Console.WriteLine("{0} {1} a {2} es: {3}", frmcv, temps[0], temps[2], frms[2]);
-                    Op_Temp.OpCelFahrKel(cels);
+                    double[] o = Op_Temp.Celsius(cels);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))//Aquí creamos un encapsulador que en caso de error va a comprobar que el tipo de excepción producida no sea FormatException.
                 //Y en caso de que sea FormatException, el programa ejecutara el código del catch que contenga el argumento FormatException 
@@ -52,15 +46,13 @@ namespace Transformador
                  sea false, finalizando el bucle while
                  */
                 string go = Console.ReadLine();
-                if (go.ToUpper() != "S")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta sale del bucle
+                if (go.ToUpper() != "S" || go.ToUpper() !="Y")//Esto comprueba si el texto introducido en mayúsculas es igual a S, y en caso de ser diferente ejecuta sale del bucle
                 {
                     rep = false;
                 }
             }
 
         }
-        #endregion
-        #region Fahrenheits-Celsius-Kelvins
         /// <summary>
         /// Método pre-creado de conversión de temperaturas. Fahrenheits a Celsius y a Kelvins.
         /// </summary>
@@ -69,13 +61,11 @@ namespace Transformador
             bool rep = true;
             while (rep)
             {
-                Console.Write($"Introduzca una temperatura en {temps[1]} a convertir:\n>> ");//Entrada en Farhenheit
+                Console.Write($"Introduzca una temperatura en ºF a convertir:\n>> ");//Entrada en Farhenheit
                 try
                 {
                     double fahr = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Console.WriteLine("\n{0} {1} a {2} es: {3}", frmcv, temps[1], temps[0], frms[0]);
-                    Console.WriteLine("{0} {1} a {2} es: {3}", frmcv, temps[0], temps[2], frms[3]);
-                    Op_Temp.OpFahrCelKel(fahr);
+                    double[] o = Op_Temp.Fahr(fahr);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -92,12 +82,11 @@ namespace Transformador
                 }
                 Console.Write(Rp);
                 string go = Console.ReadLine();
-                if (go.ToUpper() != "S") { rep = false; }
+                if (go.ToUpper() != "S" || go.ToUpper() != "Y") { rep = false; }
             }
 
         }
-        #endregion
-        #region Kelvins-Fahrenheits-Celsius
+        
         /// <summary>
         /// Método pre-creado de conversión de temperaturas. Kelvins a Celsius y a Fahrenheits.
         /// </summary>
@@ -106,13 +95,11 @@ namespace Transformador
             bool rep = true;
             while (rep)
             {
-                Console.Write($"Introduzca una temperatura en {temps[2]} a convertir:\n>> ");//Entrada en Kelvins
+                Console.Write($"Introduzca una temperatura en K a convertir:\n>> ");//Entrada en Kelvins
                 try
                 {
                     double kel = double.Parse(Regex.Replace(Console.ReadLine(), "[.,]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Console.WriteLine("\n{0} {1} a {2} es: {3}", frmcv, temps[2], temps[0], frms[1]);
-                    Console.WriteLine("{0} {1} a {2} es: {3}", frmcv, temps[2], temps[1], frms[5]);
-                    Op_Temp.OpKelFahrCels(kel);
+                    double[] o = Op_Temp.Kelvin(kel);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -129,14 +116,13 @@ namespace Transformador
                 }
                 Console.Write(Rp);
                 string go = Console.ReadLine();
-                if (go.ToUpper() != "S")
+                if (go.ToUpper() != "S" || go.ToUpper() != "Y")
                 {
                     rep = true;
                 }
             }
 
         }
-        #endregion
     }
     #endregion
 }

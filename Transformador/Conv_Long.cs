@@ -263,7 +263,7 @@ namespace Transformador
                 try
                 {
                     double pie = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Long.OpPie(pie);//Llamamos al método de pie
+                    Op_Long.OpFt(pie);//Llamamos al método de pie
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {

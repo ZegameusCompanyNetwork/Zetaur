@@ -50,7 +50,7 @@ namespace Transformador
                 try
                 {
                     double Bar = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OpBar(Bar);
+                    Op_Presion.Bar(Bar);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -79,7 +79,7 @@ namespace Transformador
                 try
                 {
                     double mBar = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OpmBar(mBar);
+                    Op_Presion.mBar(mBar);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -108,7 +108,7 @@ namespace Transformador
                 try
                 {
                     double PSI = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OpPSI(PSI);
+                    Op_Presion.PSI(PSI);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -138,7 +138,7 @@ namespace Transformador
                 try
                 {
                     double Pa = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OpPa(Pa);
+                    Op_Presion.Pa(Pa);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -167,7 +167,7 @@ namespace Transformador
                 try
                 {
                     double hPa = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OphPa(hPa);
+                    Op_Presion.hPa(hPa);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -196,7 +196,7 @@ namespace Transformador
                 try
                 {
                     double mmHg = double.Parse(Regex.Replace(Console.ReadLine(), "[.,']", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                    Op_Presion.OpmmHgTorr(mmHg);
+                    Op_Presion.mmHgTorr(mmHg);
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
